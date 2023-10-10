@@ -1,0 +1,28 @@
+{
+"name": "01-sample",
+"version": "1.0.0",
+"description": "",
+"main": "index.js",
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
+"keywords": [
+  "typescript",
+  "nodejs",
+  "ai",
+  "azure",
+    "artificial-intelligence",
+    "azure-open-ai",
+    "code-sample"
+  ],
+  "author": "Glaucia Lemos <Twitter: @glaucia_lemos86>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.8.3",
+    "concurrently": "^8.2.1",
+    "nodemon": "^3.0.1",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
