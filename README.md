@@ -12,15 +12,13 @@ This repository is responsible for studies, code samples and learnings about how
 
 ## 💻 Video Series
 
-## Code sample Developed
+(...under construction)
 
-| Code Sample                                                                                      | Description      | Language   |
-| ------------------------------------------------------------------------------------------------ | ---------------- | ---------- |
-| **[01-sample](https://github.com/glaucia86/demos-playwright-e2e/blob/main/demo-01/scripts.js)**  | Demo Code Sample | TypeScript |
-| **[02-sample](https://github.com/glaucia86/demos-playwright-e2e/blob/main/demo-02/tweet.js)**    | Demo Code Sample | TypeScript |
-| **[03-sample](https://github.com/glaucia86/demos-playwright-e2e/blob/main/demo-03/index.ts)**    | Demo Code Sample | TypeScript |
-| **[04-sample](https://github.com/glaucia86/demos-playwright-e2e/blob/main/demo-04/record.js)**   | Demo Code Sample | TypeScript |
-| **[05-sample](https://github.com/glaucia86/demos-playwright-e2e/blob/main/demo-05/linkedin.js)** | Demo Code Sample | TypeScript |
+## Code samples Developed
+
+* **[Azure OpenAI Code Samples with JavaScript/TypeScript](01-azure-openai-samples/README.md)**
+
+Here you will find some code samples developed using Azure OpenAI with JavaScript/TypeScript.
 
 
 ## 🔥How to run the samples locally?
