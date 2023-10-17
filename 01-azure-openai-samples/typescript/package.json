@@ -1,0 +1,28 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "A repository with code samples using TypeScript + Azure OpenAI",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf build && tsc",
+    "preserve": "npm run build",
+    "start": "ts-node",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "typescript",
+    "azure",
+    "openai"
+  ],
+  "author": "Glaucia Lemos <Twitter: @glaucia_lemos86>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.8.6",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "rimraf": "^5.0.5"
+  }
+}
