@@ -12,22 +12,6 @@ Here you will find a series of code samples developed using Azure OpenAI with Ja
 - [Azure Cognitive Services](https://azure.microsoft.com/en-us/services/cognitive-services/)
 - [GitHub Copilot](https://github.com/features/copilot)
 
-## 💻 Code samples Developed
-
-### TypeScript Code Samples
-
-| Code Sample                                                                                                                                       | Description      | Language   |
-| ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ---------- |
-| **[TypeScript: 01-sample](https://github.com/glaucia86/azure-openai-js-code-samples/tree/main/01-azure-openai-samples/typescript/src/01-sample)** | Demo Code Sample | TypeScript |
-| **[TypeScript: 02-sample](https://github.com/glaucia86/azure-openai-js-code-samples/tree/main/01-azure-openai-samples/typescript/src/02-sample)** | Demo Code Sample | TypeScript |
-| **[TypeScript: 03-sample](https://github.com/glaucia86/azure-openai-js-code-samples/tree/main/01-azure-openai-samples/typescript/src/03-sample)** | Demo Code Sample | TypeScript |
-| **[TypeScript: 04-sample](https://github.com/glaucia86/azure-openai-js-code-samples/tree/main/01-azure-openai-samples/typescript/src/04-sample)** | Demo Code Sample | TypeScript |
-| **[TypeScript: 05-sample](https://github.com/glaucia86/azure-openai-js-code-samples/tree/main/01-azure-openai-samples/typescript/src/05-sample)** | Demo Code Sample | TypeScript |
-
-## 💻 Video Series
-
-(...under construction)
-
 ## 🔥How to run the samples locally?
 
 ### TypeScript Code Samples
@@ -53,4 +37,31 @@ npm run start src/01-sample/index.ts`
 3. Run the sample you want to test with `npm start src/<folder-sample>/<sample.js>`. For example: `npm run start src/01-sample/index.js`
 
 (...under construction)
+
+## 💻 Code samples Developed
+
+### TypeScript Code Samples
+
+| Code Sample                                                                                                                           | Description      | Language   |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ---------- |
+| **[01-sample](https://github.com/glaucia86/azure-openai-js-code-samples/tree/main/01-azure-openai-samples/typescript/src/01-sample)** | Demo Code Sample | TypeScript |
+| **[02-sample](https://github.com/glaucia86/azure-openai-js-code-samples/tree/main/01-azure-openai-samples/typescript/src/02-sample)** | Demo Code Sample | TypeScript |
+| **[03-sample](https://github.com/glaucia86/azure-openai-js-code-samples/tree/main/01-azure-openai-samples/typescript/src/03-sample)** | Demo Code Sample | TypeScript |
+| **[04-sample](https://github.com/glaucia86/azure-openai-js-code-samples/tree/main/01-azure-openai-samples/typescript/src/04-sample)** | Demo Code Sample | TypeScript |
+| **[05-sample](https://github.com/glaucia86/azure-openai-js-code-samples/tree/main/01-azure-openai-samples/typescript/src/05-sample)** | Demo Code Sample | TypeScript |
+
+### JavaScript Code Samples
+
+| Code Sample                                                                                                                           | Description      | Language   |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ---------- |
+| **[01-sample](https://github.com/glaucia86/azure-openai-js-code-samples/tree/main/01-azure-openai-samples/javascript/src/01-sample)** | Demo Code Sample | JavaScript |
+| **[02-sample](https://github.com/glaucia86/azure-openai-js-code-samples/tree/main/01-azure-openai-samples/javascript/src/02-sample)** | Demo Code Sample | JavaScript |
+| **[03-sample](https://github.com/glaucia86/azure-openai-js-code-samples/tree/main/01-azure-openai-samples/javascript/src/03-sample)** | Demo Code Sample | JavaScript |
+| **[04-sample](https://github.com/glaucia86/azure-openai-js-code-samples/tree/main/01-azure-openai-samples/javascript/src/04-sample)** | Demo Code Sample | JavaScript |
+| **[05-sample](https://github.com/glaucia86/azure-openai-js-code-samples/tree/main/01-azure-openai-samples/javascript/src/05-sample)** | Demo Code Sample | JavaScript |
+
+## 💻 Video Series
+
+(...under construction)
+
 
