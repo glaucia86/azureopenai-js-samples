@@ -12,6 +12,9 @@ Here you will find a series of code samples developed using Azure OpenAI with Ja
 - [Azure Cognitive Services](https://azure.microsoft.com/en-us/services/cognitive-services/)
 - [GitHub Copilot](https://github.com/features/copilot)
 
+## 💻 Code samples Developed
+
+### TypeScript Code Samples
 
 | Code Sample                                                                                                                                       | Description      | Language   |
 | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ---------- |
