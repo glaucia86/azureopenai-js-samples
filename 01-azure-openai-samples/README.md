@@ -51,9 +51,3 @@ npm run start src/01-sample/index.ts`
 
 (...under construction)
 
-## Important Resources
-
-- **[Azure OpenAI Documentation](https://docs.microsoft.com/en-us/azure/ai-services/openai/)**
-- **[Azure Cognitive Services Documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/)**
-- **[LangChain Documentation](https://js.langchain.com/docs/get_started/introduction)**
-- **[GitHub Copilot](https://docs.github.com/pt/copilot)**

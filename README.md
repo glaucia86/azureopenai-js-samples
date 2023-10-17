@@ -10,44 +10,22 @@ This repository is responsible for studies, code samples and learnings about how
 - [LangChain](https://js.langchain.com/docs/get_started/introduction)
 - [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/)
 
-## 💻 Video Series
+## 📺 Video Series
 
 (...under construction)
 
-## Code samples Developed
+## 💻 Code samples Developed
 
 * **[Azure OpenAI Code Samples with JavaScript/TypeScript](01-azure-openai-samples/README.md)**
 
 Here you will find some code samples developed using Azure OpenAI with JavaScript/TypeScript.
 
+## 📕 Important Resources
 
-## 🔥How to run the samples locally?
-
-### TypeScript Code Samples
-
-1. Clone this repository
-2. Install the dependencies with `npm install` under the `typescript` folder
-3. Run the sample you want to test with
-
-```bash
-npm start src/<folder-sample>/<sample.ts>`
-```
-
-For example:
-
-```bash
-npm run start src/01-sample/index.ts`
-```
-
-### JavaScript Code Samples
-
-1. Clone this repository
-2. Install the dependencies with `npm install` under the `javascript` folder
-3. Run the sample you want to test with `npm start src/<folder-sample>/<sample.js>`. For example: `npm run start src/01-sample/index.js`
-
-(...under construction)
-
-## Important Resources
+- **[Azure OpenAI Documentation](https://docs.microsoft.com/en-us/azure/ai-services/openai/)**
+- **[Azure Cognitive Services Documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/)**
+- **[LangChain Documentation](https://js.langchain.com/docs/get_started/introduction)**
+- **[GitHub Copilot](https://docs.github.com/pt/copilot)**
 
 
 
