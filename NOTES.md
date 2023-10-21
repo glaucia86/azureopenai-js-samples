@@ -72,15 +72,211 @@ Observe que, no campo `Pricing tier`, você poderá testar o Azure OpenAI Servic
 
 Perfeito! Agora, vamos criar a aplicação Node.js para consumir o Azure OpenAI Service.
 
+## Implantando um Modelo
+
+Antes de começar a consumir o Azure OpenAI Service, você deverá fazer o deploy de um modelo. Para isso, basta seguir os passos abaixo:
+
+1. Dentro do recurso recém criado, vá até **Model deployments** e clique no botão **Manage Deployments**.
+
+[![azure-openai-07.png](https://i.postimg.cc/HnGKB50W/azure-openai-07.png)](https://postimg.cc/xJRtdXFB)
+
+2. Após clicar nesse botão, você será direcionado para a página do **[Azure OpenAI Studio](https://oai.azure.com/portal)**. Depois clique no botão **Create new deployment**
+
+[![azure-openai-08.png](https://i.postimg.cc/Gt7DbPMd/azure-openai-08.png)](https://postimg.cc/64Zq0ZJm)
+
+> observe na imagem no canto superior direito que estamos criando justamente a implantação do modelo do recurso recém criado no Portal Azure.
+
+3. Aparecerá uma janela chamada **Deploy model**. Nessa janela, você preencherá os seguintes campos:
+
+- **select a model**: escolha o modelo que deseja implantar. Nesse caso, escolha o modelo `gpt-35-turbo`.
+
+- **model version**: escolha a opção `0301 (default)`.
+
+- **deployment name**: digite um nome para a implantação (que seja um nome único).
+
+E finalmente clique no botão **Create**.
+
+[![azure-openai-09.png](https://i.postimg.cc/CLC1CsC1/azure-openai-09.png)](https://postimg.cc/N5MBBTzq)
+
+4. Aguarde alguns minutos até que a implantação seja criada.
+
+[![azure-openai-10.png](https://i.postimg.cc/j59vRJMV/azure-openai-10.png)](https://postimg.cc/CBGbNdyJ)
+
+Agora, estamos prontos para consumir o Azure OpenAI Service diretamente no código. Vamos criar agora a aplicação Node.js para consumir o Azure OpenAI Service.
+
 ## Criando a aplicação Node.js para consumir o Azure OpenAI Service
 
 Para criar a aplicação Node.js, vamos utilizar o **[Visual Studio Code](https://code.visualstudio.com/)**. Caso você não tenha instalado, basta acessar o link e fazer o download.
 
 Após instalar o Visual Studio Code, vamos criar a aplicação Node.js. Para isso, basta seguir os passos abaixo:
 
-> o exemplo abaixo é relacionado ao **[Completion Code Sample]()**
+> o exemplo abaixo é relacionado ao **[Completion Code Sample]()**. Se desejar testar a aplicação, poderá fazer uso do Codespaces do repositório exemplo.
 
-1.
+1. Crie uma pasta para o projeto e dentro da pasta, digite o comando:
+
+```bash
+npm init -y
+```
+
+O arquivo `package.json` será criado.
+
+> observação: defini para usar esm (ECMAScript Modules) no projeto. Para isso, basta adicionar o campo `type` com o valor `module` no arquivo `package.json`.
+
+<details><summary><b>package.json</b></summary>
+<br/>
+
+```json
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "a simple code sample how to use Azure OpenAI Service with JavaScript",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "ai",
+    "artificial intelligence",
+    "azure-openai"
+  ],
+  "author": "Glaucia Lemos <Twitter: @glaucia_lemos86>",
+  "license": "MIT",
+  "dependencies": {
+    "@azure/openai": "^1.0.0-beta.6",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
+```
+
+</details>
+<br/>
+
+2. Instale o pacote do Azure OpenAI Service:
+
+```bash
+npm install @azure/openai
+```
+
+3. Vamos instalar também os pacotes: `dotenv` e `nodemon`:
+
+```bash
+npm install dotenv --save
+```
+
+```bash
+npm install nodemon --save-dev
+```
+
+4. Vá até o arquivo `package.json` e adicione o script abaixo:
+
+```json
+"scripts": {
+    "start": "nodemon src/index.js"
+  },
+```
+
+5. Crie um arquivo chamado `.env` e dentro do arquivo, digite o código abaixo:
+
+```bash
+AZURE_OPENAI_ENDPOINT="https://<resource name>.openai.azure.com"
+AZURE_OPENAI_KEY="<azure api key>"
+```
+
+Para obter o `endpoint` e a `key`, basta acessar o recurso do Azure OpenAI Service criado no Portal Azure e depois clicar em **Keys and Endpoint**.
+
+[![azure-openai-11.png](https://i.postimg.cc/ZKMSdf0p/azure-openai-11.png)](https://postimg.cc/nCBg8G4h)
+
+6. Crie uma pasta chamada `src` e dentro da pasta, crie um arquivo chamado `index.js`. Dentro do arquivo `index.js`, digite o código abaixo:
+
+<details><summary><b>src/index.js</b></summary>
+<br/>
+
+```javascript
+/**
+ * file: src/index.js
+ * description: file responsible for run the code sample completion
+ * data: 10/20/2023
+ * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
+ */
+
+import { OpenAIClient, AzureKeyCredential } from '@azure/openai';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const endpoint = process.env.AZURE_OPENAI_ENDPOINT || '';
+const azureApiKey = process.env.AZURE_OPENAI_KEY || '';
+
+const prompt = ['What is Azure OpenAI?'];
+
+async function main() {
+  console.log('=== Get completions Sample ===');
+
+  const client = new OpenAIClient(
+    endpoint,
+    new AzureKeyCredential(azureApiKey)
+  );
+  const deploymentName = 'deployment-name-completion';
+  const result = await client.getCompletions(deploymentName, prompt, {
+    maxTokens: 200,
+    temperature: 0.25
+  });
+
+  for (const choice of result.choices) {
+    console.log(choice.text);
+  }
+}
+
+main().catch((err) => {
+  console.error('The sample encountered an error:', err);
+});
+```
+</details>
+<br/>
+
+Observe que no código que, colocamos o `deploymentName` que criamos no Azure AI Studio!
+
+Outro ponto a ser mencionado é que no `result` definimos a quantidade de tokens que queremos que o modelo retorne. No caso, definimos para retornar `200` tokens. Mas, você poderá definir a quantidade que desejar.
+
+E, o `temperature` é o que contralará as conclusões geradas. Quanto maior for esse valor, mais criativas serão as conclusões geradas. Enquanto que valores mais baixos retornará conclusões mais focados e determinísticos.
+
+Se vocês desejarem entender o que as classes como: `OpenAIClient` e `AzureKeyCredential` fazem, basta acessar o link **[Azure OpenAI Service Node.js API Reference](https://learn.microsoft.com/en-us/javascript/api/%40azure/openai/?view=azure-node-preview)**.
+
+1. Agora, basta executar o comando abaixo para executar a aplicação:
+
+```bash
+npm start
+```
+
+E, vejam o resultado:
+
+[![gif-azureopenai-js.gif](https://i.postimg.cc/XvJ8R8nN/gif-azureopenai-js.gif)](https://postimg.cc/TKzgmnyB)
+
+## 📚 Recursos Adicionais
+
+Abaixo segue alguns recursos adicionais sobre o Azure OpenAI Service:
+
+- **[Curso Grátis - Introdução à IA generativa](https://learn.microsoft.com/pt-br/training/paths/introduction-generative-ai/)**
+
+- **[Curso Grátis - Conceitos básicos de IA do Microsoft Azure: Introdução à inteligência artificial](https://learn.microsoft.com/pt-br/training/paths/get-started-with-artificial-intelligence-on-azure/)**
+
+- **[Azure OpenAI Service Documentation](https://learn.microsoft.com/en-us/azure/ai-services/openai/)**
+
+- **[Azure OpenAI Service Node.js API Reference](https://learn.microsoft.com/en-us/javascript/api/%40azure/openai/?view=azure-node-preview)**
+
+- **[Azure OpenAI Service pricing](https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/)**
+
+- **[QuickStarts for JavaScript](https://learn.microsoft.com/en-us/azure/ai-services/openai/chatgpt-quickstart?source=recommendations&tabs=command-line&pivots=programming-language-javascript)**
+
+
+
 
 
 
