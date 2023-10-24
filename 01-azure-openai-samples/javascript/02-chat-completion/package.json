@@ -1,5 +1,5 @@
 {
-  "name": "javascript",
+  "name": "02-chat-completion",
   "version": "1.0.0",
   "description": "a simple code sample how to use Azure OpenAI Service with JavaScript",
   "main": "index.js",
