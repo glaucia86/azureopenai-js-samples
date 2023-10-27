@@ -16,18 +16,18 @@ Here you will find a series of code samples developed using Azure OpenAI with Ja
 
 ### TypeScript Code Samples
 
-1. Clone this repository
-2. Install the dependencies with `npm install` under the `typescript` folder
+1. Clone this repository or fork if you decide to use **[Codespaces](https://github.com/features/codespaces)**
+2. Install the dependencies with `npm install` command under the `typescript` or `javascript` folder.
 3. Run the sample you want to test with
 
 ```bash
-npm start src/<folder-sample>/<sample.ts>`
+npm start src/<folder-sample>/<sample.ts>
 ```
 
 For example:
 
 ```bash
-npm run start src/01-sample/index.ts`
+npm run start src/01-sample/index.ts
 ```
 
 ### JavaScript Code Samples
@@ -62,6 +62,6 @@ npm run start src/01-sample/index.ts`
 
 ## 💻 Video Series
 
-(...under construction)
+(...sooner)
 
 
