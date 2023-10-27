@@ -12,7 +12,7 @@ This repository is responsible for studies, code samples and learnings about how
 
 ## 📺 Video Series
 
-(...under construction)
+(... sooner)
 
 ## 💻 Code samples Developed
 
