@@ -12,7 +12,17 @@ This repository is responsible for studies, code samples and learnings about how
 
 ## 📺 Video Series
 
-(... sooner)
+(... to be include)
+
+## A Practical Guide for Beginners blog posts
+
+There's a blog post teaching test by step how to use Azure OpenAI with JavaScript. It's divided in 3 parts. If you want to read it:
+
+- **English:**
+  - **[A Practical Guide for Beginners: Azure OpenAI with JavaScript and TypeScript](https://dev.to/azure/a-practical-guide-for-beginners-azure-openai-with-javascript-and-typescript-part-01-5ajh)**
+
+- **Portuguese:**
+  - **[Guia Prático para Iniciantes: Azure OpenAI com JavaScript e TypeScript]([https://dev.to/azure/a-practical-guide-for-beginners-azure-openai-with-javascript-and-typescript-part-01-5ajh](https://dev.to/azure/guia-pratico-para-iniciantes-azure-openai-com-javascript-e-typescript-parte-1-30f8))**
 
 ## 💻 Code samples Developed
 
