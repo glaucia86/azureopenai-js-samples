@@ -22,7 +22,7 @@ There's a blog post teaching test by step how to use Azure OpenAI with JavaScrip
   - **[A Practical Guide for Beginners: Azure OpenAI with JavaScript and TypeScript](https://dev.to/azure/a-practical-guide-for-beginners-azure-openai-with-javascript-and-typescript-part-01-5ajh)**
 
 - **Portuguese:**
-  - **[Guia Prático para Iniciantes: Azure OpenAI com JavaScript e TypeScript]([https://dev.to/azure/a-practical-guide-for-beginners-azure-openai-with-javascript-and-typescript-part-01-5ajh](https://dev.to/azure/guia-pratico-para-iniciantes-azure-openai-com-javascript-e-typescript-parte-1-30f8))**
+  - **[Guia Prático para Iniciantes: Azure OpenAI com JavaScript e TypeScript]([https://dev.to/azure/a-practical-guide-for-beginners-azure-openai-with-javascript-and-typescript-part-01-5ajh](https://dev.to/azure/guia-pratico-para-iniciantes-azure-openai-com-javascript-e-typescript-parte-1-30f8)**
 
 ## 💻 Code samples Developed
 
