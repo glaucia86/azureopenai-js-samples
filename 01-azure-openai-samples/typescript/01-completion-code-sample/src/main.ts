@@ -1,7 +1,7 @@
 /**
  * file: src/main.ts
  * description: file responsible for create completion code sample
- * data: 10/23/2023
+ * data: 08/12/2023
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
