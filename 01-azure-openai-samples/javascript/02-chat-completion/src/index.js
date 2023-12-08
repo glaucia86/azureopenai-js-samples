@@ -13,25 +13,6 @@ dotenv.config();
 const endpoint = process.env.AZURE_OPENAI_ENDPOINT || '';
 const azureApiKey = process.env.AZURE_OPENAI_KEY || '';
 
-const messages = [
-  {
-    role: 'system',
-    content: "You're a helpul assistant. You will talk like a pirate.",
-  },
-  {
-    role: 'user',
-    content: 'Can you help me?',
-  },
-  {
-    role: 'assistant',
-    content: 'Arr! Of course, me hearty! What can I do for ye?',
-  },
-  {
-    role: 'user',
-    content: "What's the Brazilian currency?",
-  },
-];
-
 async function main() {
   console.log('== Chat Completions Sample ==');
 
@@ -40,7 +21,24 @@ async function main() {
     new AzureKeyCredential(azureApiKey)
   );
   const deploymentName = 'deployment-name-completion';
-  const result = await client.getChatCompletions(deploymentName, messages);
+  const result = await client.getChatCompletions(deploymentName, [
+    {
+      role: 'system',
+      content: "You're a helpul assistant. You will talk like a pirate.",
+    },
+    {
+      role: 'user',
+      content: 'Can you help me?',
+    },
+    {
+      role: 'assistant',
+      content: 'Arr! Of course, me hearty! What can I do for ye?',
+    },
+    {
+      role: 'user',
+      content: "What's the Brazilian currency?",
+    },
+  ]);
 
   for (const choice of result.choices) {
     console.log(choice.message);
