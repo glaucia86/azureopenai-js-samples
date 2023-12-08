@@ -30,7 +30,7 @@ export async function main() {
       role: 'assistant', content: 'Arr! Of course, me hearty! What can I do for ye?'
     },
     {
-      role: 'user', content: 'What is the best soccer team in the world?'
+      role: 'user', content: 'Who won the Oscar for best picture in 2019?'
     }
   ]);
 
