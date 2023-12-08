@@ -19,7 +19,7 @@ export async function main() {
 
   const client = new OpenAIClient(endpoint, new AzureKeyCredential(azureApiKey));
   const deploymentName = 'deployment-name-completion';
-  const result = await client.getChatCompletions(deploymentName, [
+  const events = await client.getChatCompletions(deploymentName, [
     {
       role: 'system', content: 'You are a helpful assistant. You will talk like a pirate.'
     },
@@ -34,7 +34,7 @@ export async function main() {
     }
   ]);
 
-  for (const choice of result.choices) {
+  for (const choice of events.choices) {
     console.log(choice.message);
   }
 }
