@@ -1,6 +1,5 @@
 import { ChatOpenAI } from "@langchain/openai";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
-import { SystemMessagePromptTemplate, HumanMessagePromptTemplate } from "@langchain/core/prompts";
 import * as dotenv from "dotenv";
 
 dotenv.config();
@@ -13,25 +12,17 @@ const model = new ChatOpenAI({
   azureOpenAIApiInstanceName: process.env.AZURE_OPENAI_API_INSTANCE_NAME || "",
 });
 
-const promptFromMessages = ChatPromptTemplate.fromMessages([
-  //SystemMessagePromptTemplate.fromTemplate("You are an expert at picking company names."),
-  //HumanMessagePromptTemplate.fromTemplate("What are three good names for a company that makes {product}?"),
-
-  // Another way to do this is to use the `fromMessages` method on the `ChatPromptTemplate` class.
+const prompt = ChatPromptTemplate.fromMessages([
   ["system", "You are an expert at picking company names."],
   ["human", "What are three good names for a company that makes {product}?"]
 ]);
 
-async function generatePrompt(product: string) {
-  const formattedPrompt = await promptFromMessages.formatMessages({ product });
-  return formattedPrompt;
-}
+const chain = prompt.pipe(model);
 
 async function main() {
-  const product = "shiny objects";
-  const finalPromptResult = await generatePrompt(product);
-
-  const result = await model.invoke(finalPromptResult);
+  const result = await chain.invoke({
+    product: "colorful socks",
+  });
 
   console.log(result);
 }
