@@ -1,4 +1,4 @@
-import { OpenAIClient, AzureKeyCredential, ChatRequestMessage } from "@azure/openai";
+import { OpenAIClient, AzureKeyCredential } from "@azure/openai";
 import * as dotenv from "dotenv";
 
 dotenv.config();
@@ -6,69 +6,52 @@ dotenv.config();
 const endpoint = process.env.AZURE_OPENAI_ENDPOINT || '';
 const azureApiKey = process.env.AZURE_OPENAI_KEY || '';
 
-export async function main() {
-  console.log("== Recipe Recommendation App ==");
+function cosineSimilarity(vector1: number[], vector2: number[]): number {
+  if (vector1.length !== vector2.length) {
+    throw new Error("Vector dimensions must match for cosine similarity calculation.");
+  }
 
-  const client = new OpenAIClient(endpoint, new AzureKeyCredential(azureApiKey));
-  const deploymentName = 'deployment-name-completion';
-  //const deploymentName = '<include-your-deployment-name-here>';
+  const dotProduct = vector1.reduce((acc, val, index) => acc + val * vector2[index], 0);
+  const magnitude1 = Math.sqrt(vector1.reduce((acc, val) => acc + val ** 2, 0));
+  const magnitude2 = Math.sqrt(vector2.reduce((acc, val) => acc + val ** 2, 0));
 
-  console.log("Number of recipes: (for example: 5): ");
-  const numRecipes = "2";
+  if (magnitude1 === 0 || magnitude2 === 0) {
+    throw new Error("Magnitude of a vector must be non-zero for cosine similarity calculation.");
+  }
 
-  console.log("List of ingredients: (for example: chicken, potatoes, and carrots): ");
-  const ingredients = "chocolate";
+  return dotProduct / (magnitude1 * magnitude2);
+}
 
-  console.log("Filter (for example: vegetarian, vegan, or gluten-free): ");
-  const filter = "peanuts";
-
-  const promptText = `Show me ${numRecipes} recipes for a dish with the following ingredients: ${ingredients}. Per recipe, list all the ingredients used, no ${filter}: `;
-
-  const chatMessages: ChatRequestMessage[] = [
-    {
-      role: 'system',
-      content: 'Hello, I am a recipe recommendation bot. I will recommend recipes based on the ingredients you provide me.'
-    },
-    {
-      role: 'user',
-      content: promptText
-    },
-  ];
-
+async function main() {
   try {
-    const completionResponse = await client.getChatCompletions(deploymentName, chatMessages, {
-      maxTokens: 150,
-      temperature: 0.1,
-    });
+    console.log("== Document Similarity App ==");
+    const client = new OpenAIClient(endpoint, new AzureKeyCredential(azureApiKey));
+    const deploymentName = 'deployment-name-embeddings'; // should be of type ADA embedding for Azure Open AI
 
-    console.log("Recipe Recommendations: ");
-    console.log(completionResponse.choices[0].message?.content);
+    const source = "Car";
+    const compareTo = "Vehicle";
+    const parrot = "A bird";
 
-    const oldPromptResult = completionResponse.choices[0].message?.content;
-    const promptShoppingList = 'Produce a shopping list, and please do not include the following ingredients that I already have at home: ';
+    const parrotEmbeddings = await client.getEmbeddings(deploymentName, [parrot]);
 
-    const newPrompt = `Given ingredients at home: ${ingredients} and these generated recipes: ${oldPromptResult}, ${promptShoppingList}`;
+    // vector version
+    const embeddings = await client.getEmbeddings(deploymentName, [source]);
 
-    const shoppingListMessages: ChatRequestMessage[] = [
-      {
-        role: 'system',
-        content: 'Here is your shopping list:'
-      },
-      {
-        role: 'user',
-        content: newPrompt
-      },
-    ];
+    // vector version
+    const embeddingsCompareTo = await client.getEmbeddings(deploymentName, [compareTo]);
 
-    const shoppingListResponse = await client.getChatCompletions(deploymentName, shoppingListMessages, {
-      maxTokens: 150,
-      temperature: 0.1,
-    });
+    const carArray = embeddings.data[0].embedding;
+    const vehicleArray = embeddingsCompareTo.data[0].embedding;
+    const parrotArray = parrotEmbeddings.data[0].embedding;
 
-    console.log("\n ===== Shopping List ===== \n");
-    console.log(shoppingListResponse.choices[0].message?.content);
+    const score = cosineSimilarity(carArray, vehicleArray);
+    console.log(score.toFixed(7));
+
+    const scoreWithParrot = cosineSimilarity(carArray, parrotArray);
+    console.log(scoreWithParrot.toFixed(7));
+
   } catch (error) {
-    console.log('The sample encountered an error: ', error);
+    console.error("The sample encountered an error:", error);
   }
 }
 

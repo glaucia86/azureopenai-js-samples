@@ -1,5 +1,5 @@
 {
-  "name": "search-app",
+  "name": "functions-app",
   "version": "1.0.0",
   "description": "a simple application how to use embbedings with Azure Open AI and TypeScript",
   "main": "main.js",
