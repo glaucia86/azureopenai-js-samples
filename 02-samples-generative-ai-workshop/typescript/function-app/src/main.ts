@@ -1,5 +1,5 @@
 import { OpenAIClient, AzureKeyCredential } from "@azure/openai";
-import * as http from "http";
+import axios from "axios";
 import * as dotenv from "dotenv";
 
 dotenv.config();
@@ -9,28 +9,15 @@ const azureApiKey = process.env.AZURE_OPENAI_KEY || "";
 const bingMapsBaseUrl = process.env.BING_MAPS_BASE_URL || "";
 const bingApiKey = process.env.BING_API_KEY || "";
 
-function findWeather(currentLocation: string, placeType: string) {
+async function findWeather(currentLocation: string, placeType: string) {
   const url = `${bingMapsBaseUrl}?query=${encodeURIComponent(currentLocation)}&type=${placeType}&key=${bingApiKey}`;
 
-  return new Promise((resolve, reject) => {
-    const req = http.get(url, (res) => {
-      let data = "";
-
-      res.on("data", (chunk) => {
-        data += chunk;
-      });
-
-      res.on("end", () => {
-        resolve(data);
-      });
-
-      res.on("error", (error) => {
-        reject(error);
-      });
-
-      req.end();
-    });
-  });
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.log('Error...: ', error);
+  }
 }
 
 const getCurrentWeather = {
@@ -52,7 +39,7 @@ const getCurrentWeather = {
   },
 };
 
-export async function main() {
+async function main() {
   try {
     console.log("== Chat Completions Sample With Functions ==");
 
