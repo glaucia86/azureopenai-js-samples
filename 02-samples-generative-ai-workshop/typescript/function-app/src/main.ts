@@ -16,11 +16,11 @@ async function findWeather(currentLocation: string, placeType: string) {
     const response = await axios.get(url);
     return response.data;
   } catch (error) {
-    console.log('Error...: ', error);
+    console.log('Error in findWeather...: ', error);
   }
 }
 
-const getCurrentWeather = {
+const getCurrentWeatherFunction = {
   name: "get_current_weather",
   description: "Get the current weather in a given location",
   parameters: {
@@ -28,11 +28,11 @@ const getCurrentWeather = {
     properties: {
       location: {
         type: "string",
-        description: "The city and state, e.g. San Francisco, CA",
+        description: "The city and state, e.g. San Francisco, CA"
       },
       unit: {
         type: "string",
-        enum: ["celsius", "fahrenheit"],
+        enum: ["C", "F"], // Celsius or Fahrenheit
       },
     },
     required: ["location"],
@@ -41,27 +41,26 @@ const getCurrentWeather = {
 
 async function main() {
   try {
-    console.log("== Chat Completions Sample With Functions ==");
+    console.log("== Chat Completions App with Functions ==");
 
     const client = new OpenAIClient(endpoint, new AzureKeyCredential(azureApiKey));
-    const deploymentName = "gpt-4";
-    const result = await client.getChatCompletions(
-      deploymentName,
-      [{ role: "user", content: "What's the weather like in Boston?" }],
-      {
-        functions: [getCurrentWeather],
-      },
-    );
+    const deploymentName = "gpt-4"; // if you want to use 'gpt-4' you need to create a resource in Sweden Central
+    const result = await client.getChatCompletions(deploymentName, [
+      { role: "user", content: "What's the weather in New York, NYC?" }
+    ], {
+      functions: [getCurrentWeatherFunction],
+    });
 
     for (const choice of result.choices) {
       console.log(choice.message?.functionCall);
+
       if (choice.message?.functionCall) {
-        let res = await findWeather("Boston", "celsius");
-        console.log("Result...:", res);
+        let response = await findWeather("New York", "C"); // include here the city and type [C = Celsius, F = Fahrenheit]
+        console.log("Result from Bing Maps API..: ", response);
       }
     }
   } catch (error) {
-    console.error("The sample encountered an error:", error);
+    console.error("The sample encountered an error...:", error);
   }
 }
 
