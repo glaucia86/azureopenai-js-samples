@@ -1,0 +1,17 @@
+{
+  "name": "sitepoint-tutorial",
+  "version": "1.0.0",
+  "description": "a sample tutorial to learn how to use Azure OpenAI with LangChain.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "langchain",
+    "azure-openai",
+    "typescript",
+    "javascript"
+  ],
+  "author": "Glaucia Lemos <Twitter: @glaucia_lemos86>",
+  "license": "MIT"
+}
