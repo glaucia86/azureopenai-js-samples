@@ -15,6 +15,10 @@
   "author": "Glaucia Lemos <Twitter: @glaucia_lemos86>",
   "license": "MIT",
   "dependencies": {
+    "@langchain/azure-openai": "^0.0.2",
     "langchain": "^0.1.23"
+  },
+  "overrides": {
+    "@langchain/core": "^0.1.39"
   }
 }
