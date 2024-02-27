@@ -13,5 +13,8 @@
     "javascript"
   ],
   "author": "Glaucia Lemos <Twitter: @glaucia_lemos86>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "langchain": "^0.1.23"
+  }
 }
