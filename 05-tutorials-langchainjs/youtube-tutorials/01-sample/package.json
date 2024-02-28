@@ -1,0 +1,41 @@
+{
+  "name": "01-sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf build && tsc",
+    "preserve": "npm run build",
+    "start": "npm run build && nodemon"
+  },
+  "keywords": [
+    "langchain",
+    "typescript",
+    "nodejs",
+    "azure-openai",
+    "openai"
+  ],
+  "author": "Glaucia Lemos <Twitter: @glaucia_lemos86>",
+  "license": "MIT",
+  "dependencies": {
+    "@langchain/azure-openai": "^0.0.2",
+    "@langchain/community": "^0.0.33",
+    "@langchain/core": "^0.1.39",
+    "dotenv": "^16.4.5",
+    "langchain": "^0.1.23",
+    "rimraf": "^5.0.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.21",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts",
+    "exec": "npx ts-node ./src/main.ts"
+  }
+}
