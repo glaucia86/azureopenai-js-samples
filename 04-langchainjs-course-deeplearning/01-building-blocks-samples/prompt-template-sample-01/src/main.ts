@@ -11,6 +11,7 @@ const model = new ChatOpenAI({
   azureOpenAIApiDeploymentName: process.env.AZURE_OPENAI_API_DEPLOYMENT_NAME || "",
   azureOpenAIApiEmbeddingsDeploymentName: process.env.AZURE_OPENAI_API_EMBEDDINGS_DEPLOYMENT_NAME || "",
   azureOpenAIApiInstanceName: process.env.AZURE_OPENAI_API_INSTANCE_NAME || "",
+  modelName: 'text-embedding-ada-002'
 });
 
 const prompt = ChatPromptTemplate.fromMessages([

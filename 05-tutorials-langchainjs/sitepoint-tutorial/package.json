@@ -2,9 +2,11 @@
   "name": "sitepoint-tutorial",
   "version": "1.0.0",
   "description": "a sample tutorial to learn how to use Azure OpenAI with LangChain.js",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rimraf build && tsc",
+    "preserve": "npm run build",
+    "start": "npm run build && nodemon"
   },
   "keywords": [
     "langchain",
@@ -14,11 +16,25 @@
   ],
   "author": "Glaucia Lemos <Twitter: @glaucia_lemos86>",
   "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.10.8",
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
   "dependencies": {
     "@langchain/azure-openai": "^0.0.2",
-    "langchain": "^0.1.23"
+    "@langchain/community": "^0.0.33",
+    "@langchain/core": "^0.1.39",
+    "dotenv": "^16.4.5",
+    "langchain": "^0.1.23",
+    "rimraf": "^5.0.5"
   },
-  "overrides": {
-    "@langchain/core": "^0.1.39"
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts",
+    "exec": "npx ts-node ./src/main.ts"
   }
 }
